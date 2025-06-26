@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Image Preview</title>
+  <meta charset="UTF-8">
+  <title>Interactive Photo Gallery</title> <!-- W3C validator yêu cầu -->
   <style>
     #image {
       height: 300px;
@@ -15,38 +16,27 @@
     }
     .preview {
       height: 100px;
-      margin: 10px;
+      margin: 5px;
       border: 1px solid gray;
+      cursor: pointer;
     }
   </style>
 </head>
-<body>
+<body onload="initializeGallery()">
+  <h1>Interactive Photo Gallery</h1>
+  <h2>Hover or focus on an image to preview</h2>
+
   <div id="image">Hover over an image below to display here.</div>
 
-  <img class="preview" src="OIP.jpg" alt="" 
-       onmouseover="upDate(this)" onmouseout="undo()">
-  <img class="preview" src="R.jpg" alt="" 
-       onmouseover="upDate(this)" onmouseout="undo()">
-  <img class="preview" src="OIP (1).jpg" alt="" 
-       onmouseover="upDate(this)" onmouseout="undo()">
+  <div>
+    <img class="preview" src="https://via.placeholder.com/100x100?text=1" alt="Preview Image 1">
+    <img class="preview" src="https://via.placeholder.com/100x100?text=2" alt="Preview Image 2">
+    <img class="preview" src="https://via.placeholder.com/100x100?text=3" alt="Preview Image 3">
+    <img class="preview" src="https://via.placeholder.com/100x100?text=4" alt="Preview Image 4">
+    <img class="preview" src="https://via.placeholder.com/100x100?text=5" alt="Preview Image 5">
+    <img class="preview" src="https://via.placeholder.com/100x100?text=6" alt="Preview Image 6">
+  </div>
 
-  <script>
-  function upDate(previewPic) {
-    console.log("Event triggered");
-    console.log("Alt text:", previewPic.alt);
-    console.log("Image src:", previewPic.src);
-
-    let imageDiv = document.getElementById("image");
-    imageDiv.style.backgroundImage = `url('${previewPic.src}')`;
-    imageDiv.innerHTML = previewPic.alt;
-  }
-
-  function undo() {
-    let imageDiv = document.getElementById("image");
-    imageDiv.style.backgroundImage = "url('')";
-    imageDiv.innerHTML = "Hover over an image below to display here.";
-  }
-
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

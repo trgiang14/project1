@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Preview</title>
+  <style>
+    #image {
+      height: 300px;
+      width: 500px;
+      border: 1px solid black;
+      background-color: #eee;
+      background-size: cover;
+      text-align: center;
+      line-height: 300px;
+      font-size: 20px;
+    }
+    .preview {
+      height: 100px;
+      margin: 10px;
+      border: 1px solid gray;
+    }
+  </style>
+</head>
+<body>
+  <div id="image">Hover over an image below to display here.</div>
+
+  <img class="preview" src="OIP.jpg" alt="" 
+       onmouseover="upDate(this)" onmouseout="undo()">
+  <img class="preview" src="R.jpg" alt="" 
+       onmouseover="upDate(this)" onmouseout="undo()">
+  <img class="preview" src="OIP (1).jpg" alt="" 
+       onmouseover="upDate(this)" onmouseout="undo()">
+
+  <script>
+  function upDate(previewPic) {
+    console.log("Event triggered");
+    console.log("Alt text:", previewPic.alt);
+    console.log("Image src:", previewPic.src);
+
+    let imageDiv = document.getElementById("image");
+    imageDiv.style.backgroundImage = `url('${previewPic.src}')`;
+    imageDiv.innerHTML = previewPic.alt;
+  }
+
+  function undo() {
+    let imageDiv = document.getElementById("image");
+    imageDiv.style.backgroundImage = "url('')";
+    imageDiv.innerHTML = "Hover over an image below to display here.";
+  }
+
+  </script>
+</body>
+</html>

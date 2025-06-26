@@ -29,14 +29,52 @@
   <div id="image">Hover over an image below to display here.</div>
 
   <div>
-    <img class="preview" src="https://via.placeholder.com/100x100?text=1" alt="Preview Image 1">
-    <img class="preview" src="https://via.placeholder.com/100x100?text=2" alt="Preview Image 2">
-    <img class="preview" src="https://via.placeholder.com/100x100?text=3" alt="Preview Image 3">
-    <img class="preview" src="https://via.placeholder.com/100x100?text=4" alt="Preview Image 4">
-    <img class="preview" src="https://via.placeholder.com/100x100?text=5" alt="Preview Image 5">
-    <img class="preview" src="https://via.placeholder.com/100x100?text=6" alt="Preview Image 6">
+    <img class="preview" src="OIP (1).jpg" alt="Preview Image 1">
+    <img class="preview" src="OIP.jpg" alt="Preview Image 2">
+    <img class="preview" src="R.jpg" alt="Preview Image 3">
+    <img class="preview" src="R (1).jpg" alt="Preview Image 4">
+    <img class="preview" src="R (2).jpg" alt="Preview Image 5">
+    <img class="preview" src="41861c82ae0fbdcc797e40a27e2de7f6.jpg" alt="Preview Image 6">
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    function upDate(previewPic) {
+    const imageDiv = document.getElementById("image");
+    imageDiv.style.backgroundImage = `url('${previewPic.src}')`;
+    imageDiv.innerHTML = previewPic.alt;
+  }
+
+  function undo() {
+    const imageDiv = document.getElementById("image");
+    imageDiv.style.backgroundImage = "url('')";
+    imageDiv.innerHTML = "Hover over an image below to display here.";
+  }
+
+  function initializeGallery() {
+    console.log("Page loaded - initializeGallery running");
+    const previews = document.querySelectorAll(".preview");
+
+    for (let i = 0; i < previews.length; i++) {
+      const img = previews[i];
+    
+      img.addEventListener("mouseover", function () {
+        upDate(this);
+      });
+      img.addEventListener("mouseleave", function () {
+        undo();
+      });
+      
+      img.addEventListener("focus", function () {
+        upDate(this);
+      });
+      img.addEventListener("blur", function () {
+        undo();
+      });
+
+      img.setAttribute("tabindex", "0");
+    }
+  }
+
+  </script>
 </body>
 </html>
